@@ -9,7 +9,9 @@
 
 plugins {
       id "nl.ikoodi.jenkins.jobdsl" version "0.4.1"
+      id "com.bmuschko.vagrant" version "2.0"
 }
+
 // Apply the groovy plugin to add support for Groovy
 apply plugin: 'groovy'
 
@@ -37,4 +39,26 @@ jenkinsJobDsl {
   classpath {
     from sourceSets.main.groovy
   }
+}
+vagrant {
+    installation {
+        validate = false
+    }
+    provider = 'vmware_fusion'
+}
+
+import com.bmuschko.gradle.vagrant.tasks.Vagrant
+import com.bmuschko.gradle.vagrant.tasks.VagrantSsh
+
+task vagrantListsBoxes(type: Vagrant) {
+    description = 'Outputs a list of available Vagrant boxes.'
+    commands = ['box', 'list']
+}
+
+task vagrantEcho(type: VagrantSsh) {
+    description = 'Runs remote SSH command in Vagrant box.'
+    sshCommand = "echo 'hello'"
+
+    dependsOn vagrantUp
+    finalizedBy vagrantDestroy
 }
