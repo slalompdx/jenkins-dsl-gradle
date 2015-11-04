@@ -12,11 +12,12 @@ Vagrant.configure(2) do |config|
 
   # Every Vagrant development environment requires a box. You can search for
   # boxes at https://atlas.hashicorp.com/search.
-  config.vm.box = "puppetlabs/centos-7.0-64-nocm"
+  config.vm.box = "slalompdx/centos-7.1-puppet-jenkins"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   config.vm.box_url = "."
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -63,14 +64,8 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
-   config.vm.provision "shell", inline: <<-SHELL
-     sudo yum clean all
-     sudo rpm -ivh https://yum.puppetlabs.com/puppetlabs-release-el-7.noarch.rpm
-     sudo yum -y install puppet
-     sudo puppet module install puppetlabs-stdlib
-     sudo puppet module install rtyler-jenkins
-     sudo puppet module install jdowning-rbenv
-     sudo puppet module install puppetlabs-firewall
-     sudo puppet apply -v /vagrant/puppet/manifests/jenkins.pp
-   SHELL
+  # config.vm.provision "shell", inline: <<-SHELL
+  #   sudo apt-get update
+  #   sudo apt-get install -y apache2
+  # SHELL
 end
