@@ -68,4 +68,8 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+  config.vm.provision "puppet" do |puppet|
+    puppet.manifests_path = 'ext'
+    puppet.manifest_file = 'jobs.pp'
+  end
 end

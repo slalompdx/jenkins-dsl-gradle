@@ -1,5 +1,5 @@
 job {
-    name 'Example Single Job'
-    description 'Single job example'
+    name 'seed'
+    description 'Seed job'
 }
 
