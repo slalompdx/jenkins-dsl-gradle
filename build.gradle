@@ -44,7 +44,7 @@ vagrant {
     installation {
         validate = false
     }
-    provider = 'vmware_fusion'
+    provider = 'virtualbox'
 }
 
 import com.bmuschko.gradle.vagrant.tasks.Vagrant
