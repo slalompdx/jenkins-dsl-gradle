@@ -1,3 +1,5 @@
+based on https://github.com/pvdissel/gradle-jenkins-jobdsl
+
 Very very basic instructions:
 
 Fork this repository and add your specific definitions.
