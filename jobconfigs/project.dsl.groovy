@@ -1,5 +1,7 @@
-job {
-    name 'seed'
-    description 'Seed job'
+job('seed') {
+  description('Seed job')
+  customWorkspace('/vagrant')
+  steps {
+    gradle('clean generateJenkinsJobs')
+  }
 }
-

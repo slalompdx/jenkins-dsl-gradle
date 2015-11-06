@@ -1,5 +1,5 @@
 jenkins::job { 'seed':
-  config => template('/vagrant/build/jobDsl/generated/seed.xml')
+  config => template('/vagrant/build/jobDsl/workspace/seed.xml')
 }
 $jenkins_config = {
   'JENKINS_JAVA_OPTIONS' => { 'value' => '-Djava.awt.headless=true -XX:MaxPermSize=512m' },

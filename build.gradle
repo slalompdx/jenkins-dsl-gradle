@@ -2,10 +2,12 @@ buildscript {
     repositories {
         mavenLocal()
         jcenter()
+        maven { url 'http://repo.jenkins-ci.org/releases/' }
     }
 
     dependencies {
         classpath 'nl.ikoodi.gradle.plugin:gradle-jenkins-jobdsl:0.2.0'
+        classpath 'org.jenkins-ci.plugins:job-dsl-core:1.39'
     }
 }
 
